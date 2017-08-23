@@ -10,12 +10,21 @@
         <button onclick="blancoYnegro();">blanco Y negro</button>
         <input type="file" onchange="cargarImg();" name="name" value="" id="img" >
 
+
+				<input type="number" id="cantBrillo" value="">
+				<button type="button" onclick="subirBrillo();" name="button">Aplicar brillo</button>
+
+				  <button onclick="binarizacion();">binarizacion</button>
       </div>
       <canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
     </body>
 	<script>
         var ctx = document.getElementById("canvas").getContext("2d");
 		    var imagen = new Image();
+
+
+
+
 
         //cargo imagen
         function cargarImg(){
@@ -29,7 +38,7 @@
 
         //dibuja la imagen
         function myDrawImageMethod(img){
-        ctx.drawImage(img,0,0);
+        ctx.drawImage(img,0,0,img.width,img.height,0,0,canvas.width, canvas.height);
         }
 
 
@@ -49,11 +58,61 @@
 	      return imageData.data[index+2];
         }
 
+				//aplico binarizacion
+				function binarizacion(){
+					imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
+
+					for (x=0 ; x<imagen.width; x++){
+						for (y=0; y<imagen.height; y++){
+
+							var r=((getRed(imageData,x,y)));
+							var g=((getGreen(imageData,x,y)));
+							var b=((getBlue(imageData,x,y)));
+							var grayScale =  (0.299 * r + 0.587 * g + 0.114 * b);
+							if(grayScale>128){
+								r=255;
+								g=255;
+								b=255;
+							}else{
+								r=0;
+								g=0;
+								b=0;
+							}
+							setPixel(imageData,x,y,r,g,b,255);
+						}
+					}
+					//vuelvo a dibujar la img con el filtro aplicado
+					ctx.putImageData(imageData,0,0);
+
+				}
+
+				//aplico brillo ingresado por usuario
+				function subirBrillo(){
+					imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
+
+					var cant=+document.getElementById("cantBrillo").value;
+
+					console.log(cant);
+					for (x=0 ; x<imagen.width; x++){
+            for (y=0; y<imagen.height; y++){
+
+							var r=((getRed(imageData,x,y))+cant);
+							var g=((getGreen(imageData,x,y))+cant);
+							var b=((getBlue(imageData,x,y))+cant);
+  						setPixel(imageData,x,y,r,g,b,255);
+        		}
+        	}
+          //vuelvo a dibujar la img con el filtro aplicado
+          ctx.putImageData(imageData,0,0);
+
+				}
+
+
         //aplico el filtro ByN
         function blancoYnegro(){
           imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
-          for (y=0 ; y<imagen.height; y++){
-            for (x=0; x<imagen.width; x++){
+          for (x=0 ; x<imagen.width; x++){
+            for (y=0; y<imagen.height; y++){
               var pixelbyn=(getRed(imageData,x,y)+getGreen(imageData,x,y)+getBlue(imageData,x,y)/3);
               setPixel(imageData,x,y,pixelbyn,pixelbyn,pixelbyn,255);
         		}
