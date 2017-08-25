@@ -23,8 +23,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
-						<label class="control-label">Crargar Imagen</label>
+						<label class="control-label">Cargar Imagen</label>
 						<input class="btn btn-primary active btn-success" id="img" name="imagen" onchange="cargarImg();" type="file" >
+
 
 
 						</div>
@@ -42,16 +43,21 @@
 						<div class="contaigner">
 							<div class="row">
 								<h2 class="col-md-8">Filtro Aplicado</h2>
-								<a class="descarga col-md-3" id="descarga"><button type="button" onclick="descargar();" class="btn btn-primary active btn-danger" name="BTNdescarga">Descargar Imagen</button></a>
+								<a class="descarga col-md-2" id="descarga"><button type="button" onclick="descargar();" class="btn btn-primary active btn-danger" name="BTNdescarga">Descargar Imagen</button></a>
 							</div>
 
 						</div>
 
 						<canvas id="canvas" width="400" height="400" style="border:#000 solid 1px;" />
 					</div>
-					<div class="col-md-1 col-md-offset-1">
-						<input type="number" id="cantBrillo" value="" >
-						<button class="btn btn-primary active btn-success" onclick="subirBrillo();" name="button">Aplicar brillo</button>
+					<div class="col-md-1 col-md-offset-6">
+						<br>
+						<input size="100" type="number" id="cantBrillo" value="" >
+
+						<div class="col-md-offset-5">
+							<button class="btn btn-primary active btn-success" onclick="subirBrillo();" name="button">Aplicar brillo</button>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -61,7 +67,7 @@
 
 			<br>
 			<br>
-			<div class="container">
+			<div class="container filtros">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-2">
