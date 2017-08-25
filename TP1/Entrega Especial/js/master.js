@@ -381,11 +381,7 @@ function subirBrillo(){
 }
 
 
-//seteo brillo
-function setBrillo(){
-$('#cantBrillo').val("");
 
-}
 
 
 //aplico el filtro ByN
