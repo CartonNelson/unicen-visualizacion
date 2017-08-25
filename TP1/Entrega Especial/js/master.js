@@ -2,7 +2,7 @@
 var ctx = document.getElementById("canvas").getContext("2d");
 var ctxOrigen = document.getElementById("canvasOrigen").getContext("2d");
 var imagen = new Image();
-
+var filtroAplicado=false;
 
 
 
@@ -34,6 +34,7 @@ reader.readAsDataURL(file.files[0]);
 function myDrawImageMethod(img){
 ctx.drawImage(img, 0, 0, img.width,img.height);
 ctxOrigen.drawImage(img, 0, 0, img.width,img.height);
+setBrillo();
 }
 
 function downloadCanvas(link, canvasId, filename) {
@@ -49,6 +50,15 @@ document.getElementById('descarga').addEventListener('click', function() {
     downloadCanvas(this, 'canvas', 'ImgModificada.png');
 }, false);
 
+
+(function ($) {
+  $('.spinner .btn:first-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+  });
+  $('.spinner .btn:last-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+  });
+})(jQuery);
 
 
 //genero imagen
@@ -80,6 +90,7 @@ return imageData.data[index+2];
 
 function origen(){
  myDrawImageMethod(imagen);
+ $('#cantBrillo').val("");
 }
 
 //aplico el filtro negativo
@@ -95,6 +106,8 @@ function negativo(){
   }
   //vuelvo a dibujar la img con el filtro aplicado
   ctx.putImageData(imageData,0,0);
+  $('#cantBrillo').val("");
+  filtroAplicado=true;
 }
 
 
@@ -124,6 +137,8 @@ function saturar(){
 
 
     ctx.putImageData(imageData,0,0);
+    $('#cantBrillo').val("");
+    filtroAplicado=true;
   }
 
 
@@ -237,6 +252,46 @@ function sepia(){
 
   //ctx.putImageData(imageData,0,0,);
     ctx.putImageData(imageData,0,0);
+    $('#cantBrillo').val("");
+    filtroAplicado=true;
+}
+
+
+function blurComun(){
+
+    var sobel_x=[  1/9, 1/9,  1/9,
+                1/9,  1/9, 1/9,
+                1/9, 1/9,  1/9 ];
+      console.log(sobel_x);
+
+    var imageData = ctxOrigen.getImageData(0,0,imagen.width,imagen.height);
+    var aux = ctx.getImageData(0,0,imagen.width,imagen.height);
+
+    for (x=1 ; x<imagen.width-1; x++){
+      for (y=1; y<imagen.height-1; y++){
+        //var pixel=getRed(imageData,x,y);
+
+        var r = ((sobel_x[0,0]*getRed(imageData,(x-1),(y-1)))+(sobel_x[1,0]*getRed(imageData,x,(y-1)))+(sobel_x[2,0]*getRed(imageData,(x+1),(y-1))))+
+        ((sobel_x[0,1]*getRed(imageData,x,(y-1)))+(sobel_x[1,1]*getRed(imageData,x,y))+(sobel_x[2,1]*getRed(imageData,x,(y+1))))+
+        ((sobel_x[0,2]*getRed(imageData,(x-1),(y+1)))+(sobel_x[1,2]*getRed(imageData,x,(y+1)))+(sobel_x[2,2]*getRed(imageData,(x+1),(y+1))));
+
+        var g = ((sobel_x[0,0]*getGreen(imageData,(x-1),(y-1)))+(sobel_x[1,0]*getGreen(imageData,x,(y-1)))+(sobel_x[2,0]*getGreen(imageData,(x+1),(y-1))))+
+        ((sobel_x[0,1]*getGreen(imageData,x,(y-1)))+(sobel_x[1,1]*getGreen(imageData,x,y))+(sobel_x[2,1]*getGreen(imageData,x,(y+1))))+
+        ((sobel_x[0,2]*getGreen(imageData,(x-1),(y+1)))+(sobel_x[1,2]*getGreen(imageData,x,(y+1)))+(sobel_x[2,2]*getGreen(imageData,(x+1),(y+1))));
+
+        var b = ((sobel_x[0,0]*getBlue(imageData,(x-1),(y-1)))+(sobel_x[1,0]*getBlue(imageData,x,(y-1)))+(sobel_x[2,0]*getBlue(imageData,(x+1),(y-1))))+
+        ((sobel_x[0,1]*getBlue(imageData,x,(y-1)))+(sobel_x[1,1]*getBlue(imageData,x,y))+(sobel_x[2,1]*getBlue(imageData,x,(y+1))))+
+        ((sobel_x[0,2]*getBlue(imageData,(x-1),(y+1)))+(sobel_x[1,2]*getBlue(imageData,x,(y+1)))+(sobel_x[2,2]*getBlue(imageData,(x+1),(y+1))));
+
+        setPixel(aux,x,y,r,g,b,255);
+
+      }
+    }
+    ctx.putImageData(aux,0,0);
+    $('#cantBrillo').val("");
+    filtroAplicado=true;
+
+
 }
 
 
@@ -264,7 +319,8 @@ function blurByN(){
       }
     }
     ctx.putImageData(aux,0,0);
-
+    $('#cantBrillo').val("");
+    filtroAplicado=true;
 
 }
 
@@ -294,12 +350,18 @@ function binarizacion(){
   }
   //vuelvo a dibujar la img con el filtro aplicado
   ctx.putImageData(imageData,0,0);
-
+  $('#cantBrillo').val("");
+  filtroAplicado=true;
 }
 
 //aplico brillo ingresado por usuario
 function subirBrillo(){
-  imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
+  if (filtroAplicado) {
+    imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
+  }else{
+    imageData = ctxOrigen.getImageData(0,0,imagen.width,imagen.height);
+  }
+
 
   var cant=+document.getElementById("cantBrillo").value;
 
@@ -319,6 +381,13 @@ function subirBrillo(){
 }
 
 
+//seteo brillo
+function setBrillo(){
+$('#cantBrillo').val("");
+
+}
+
+
 //aplico el filtro ByN
 function blancoYnegro(){
   imageData = ctxOrigen.getImageData(0,0,imagen.width,imagen.height);
@@ -330,4 +399,6 @@ function blancoYnegro(){
   }
   //vuelvo a dibujar la img con el filtro aplicado
   ctx.putImageData(imageData,0,0);
+  $('#cantBrillo').val("");
+  filtroAplicado=true;
 }

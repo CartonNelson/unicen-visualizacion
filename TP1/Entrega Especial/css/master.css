@@ -17,12 +17,18 @@ h2{
   text-align: center;
 
 }
+label{
+    display: block;
+    text-align: center;
+    font-size: 20px;
+}
+
 .filtros{
   text-align: center;
   font-size: 20px;
-}
 
-h2, .filtros{
+}
+label,h2, .filtros{
   color:#AA3C39;
    text-shadow: 2px 2px #470402;
 }

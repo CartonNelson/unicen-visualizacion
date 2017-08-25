@@ -13,54 +13,70 @@
     <body>
 
 
+			<br>
+			<br>
+
 			<div class="container">
 				<div class="row">
+					<div class="col-md-3 col-md-offset-1">
+						<input type="file" onchange="cargarImg();" id="img"  class="filestyle" data-btnClass="btn-primary" >
+
+					</div>
+					<div class="descarga col-md-2 col-md-offset-2">
+						<a class="" id="descarga"><button type="button" onclick="descargar();" class="btn btn-primary active btn-danger" name="BTNdescarga">Descargar Imagen</button></a>
+
+					</div>
 
 				</div>
 			</div>
 			<br>
 			<br>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<label class="control-label">Cargar Imagen</label>
-						<input class="btn btn-primary active btn-success" id="img" name="imagen" onchange="cargarImg();" type="file" >
 
 
+						<!--<input class="btn btn-primary active btn-success col-md-4" id="img" name="imagen" onchange="cargarImg();" type="file" placeholder="subir imagen">
+-->
 
-						</div>
-
-					</div>
-			</div>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 col-md-offset-1">
 						<h2>Imagen Original</h2>
-							<canvas id="canvasOrigen" width="300" height="300" style="border:#000 solid 1px;" />
+							<canvas id="canvasOrigen" width="400" height="400" style="border:#000 solid 1px;" />
 
 					</div>
 					<div class="col-md-4 col-md-offset-1">
 						<div class="contaigner">
 							<div class="row">
 								<h2 class="col-md-8">Filtro Aplicado</h2>
-								<a class="descarga col-md-2" id="descarga"><button type="button" onclick="descargar();" class="btn btn-primary active btn-danger" name="BTNdescarga">Descargar Imagen</button></a>
 							</div>
 
 						</div>
 
-						<canvas id="canvas" width="300" height="300" style="border:#000 solid 1px;" />
+						<canvas id="canvas" width="400" height="400" style="border:#000 solid 1px;" />
 					</div>
-					<div class="col-md-1 col-md-offset-6">
-						<br>
-						<input size="100" type="number" id="cantBrillo" value="" >
 
-						<div class="col-md-offset-5">
-							<button class="btn btn-primary active btn-success" onclick="subirBrillo();" name="button">Aplicar brillo</button>
-						</div>
-
-					</div>
 				</div>
 			</div>
+			<br>
+			<div class="container">
+
+						<div class="row">
+							<div class=" col-md-4 col-md-offset-6">
+								<label >Ajustar Brillo</label>
+
+								<input type="range" onchange="subirBrillo();"class="form-control" value="0" min="-50" max='50' step="-1" id="cantBrillo" >
+								<button type="button" onclick="setBrillo();" class="btn btn-primary active btn-success col-md-offset-4" name="button">Restrablecer</button>
+
+							</div>
+
+
+
+
+
+				</div>
+			</div>
+
+
+			<br>
 			<br>
 
 		<div class="container">
@@ -97,6 +113,7 @@
 									<div class="item">
 										<div class="row-fluid">
 											<img src="images/sepia.png" onclick="sepia();" width="180" height="180" class="img-rounded col-md-offset-2" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
+											<img src="images/blur.png" onclick="blurComun();" width="180" height="180" class="img-rounded col-md-offset-1" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
 
 										</div><!--/row-fluid-->
 								</div><!--/item-->
@@ -119,6 +136,7 @@
 			 <script src="js/bootstrap.min.js"></script>
 				<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 				<script type="text/javascript" src="js/master.js">  </script>
+				<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
     </body>
 
 </html>
