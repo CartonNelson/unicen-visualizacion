@@ -3,8 +3,16 @@ body{
 background-image: url("../images/madera.jpg");
 
 }
+@font-face {
+  font-family: alice;
+  src: url(../fonts/alice.ttf);
+}
+@font-face {
+  font-family: striped;
+  src: url(../fonts/striped.ttf);
+}
 h2{
-  font-family:serif;
+  font-family:alice;
   font-size: 35px;
   text-align: center;
 
@@ -17,4 +25,12 @@ h2{
 h2, .filtros{
   color:#AA3C39;
    text-shadow: 2px 2px #470402;
+}
+
+h1{
+  font-family: striped;
+  text-align: center;
+  font-size: 100px;
+  color:green;
+  text-shadow: 2px 2px #470402;
 }
