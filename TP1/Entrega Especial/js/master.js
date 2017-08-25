@@ -78,6 +78,9 @@ index = (x+y*imageData.width)*4;
 return imageData.data[index+2];
 }
 
+function origen(){
+ myDrawImageMethod(imagen);
+}
 
 //aplico el filtro negativo
 function negativo(){
