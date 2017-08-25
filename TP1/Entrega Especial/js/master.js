@@ -1,4 +1,5 @@
 var ctx = document.getElementById("canvas").getContext("2d");
+var ctxOrigen = document.getElementById("canvasOrigen").getContext("2d");
 var imagen = new Image();
 
 
@@ -31,6 +32,7 @@ reader.readAsDataURL(file.files[0]);
 //dibuja la imagen
 function myDrawImageMethod(img){
 ctx.drawImage(img, 0, 0, img.width,img.height);
+ctxOrigen.drawImage(img, 0, 0, img.width,img.height);
 }
 
 //genero imagen
@@ -73,7 +75,7 @@ for (x=0 ; x<canvas	.width; x++){
     var b=getBlue(imageData,x,y);
     var rgb=[r,g,b];
     var hsv= RGBtoHSV (rgb);
-    hsv[1] *= 4.5;
+    hsv[1] *= 2.2;
     var rgb= HSVtoRGB(hsv);
     r=rgb[0];
     g=rgb[1];

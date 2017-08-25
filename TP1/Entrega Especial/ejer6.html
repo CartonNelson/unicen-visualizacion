@@ -7,38 +7,71 @@
 			<link href="css/bootstrap.min.css" rel="stylesheet">
 			<link href="css/master.css" rel="stylesheet">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Template</title>
+		<title>Filter</title>
 	</head>
 
     <body>
-
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-2">
-						<canvas id="canvas" width="700" height="500" style="border:#000 solid 1px;" />
-					</div>
 
 				</div>
 			</div>
-
+			<br>
+			<br>
 			<div class="container">
-				<div class="col-md-4">
-	        <button onclick="blancoYnegro();">blanco Y negro</button>
-	        <input type="file" onchange="cargarImg();" name="name" value="" id="img" >
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<label class="control-label">Crargar Imagen</label>
+						<input class="btn btn-primary active btn-success" id="img" name="imagen" onchange="cargarImg();" type="file" >
 
 
-					<input type="number" id="cantBrillo" value="">
-					<button type="button" onclick="subirBrillo();" name="button">Aplicar brillo</button>
+						</div>
 
-					  <button onclick="binarizacion();">binarizacion</button>
-
-						  <button onclick="sepia();">sepia</button>
-							  <button onclick="blurByN();">Blur</button>
-								<button onclick="saturar();">saturacion</button>
-
-
-	      </div>
+					</div>
 			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-1">
+						<h2>Imagen Original</h2>
+							<canvas id="canvasOrigen" width="400" height="400" style="border:#000 solid 1px;" />
+
+					</div>
+					<div class="col-md-4 col-md-offset-1">
+						<h2>Filtro Aplicado</h2>
+
+						<canvas id="canvas" width="400" height="400" style="border:#000 solid 1px;" />
+					</div>
+				</div>
+			</div>
+			<br>
+			<br>
+
+
+			<br>
+			<br>
+			<div class="container">
+				<div class="row">
+					<img src="images/sepia.png" onclick="sepia();" width="200" height="200" class="img-rounded" class="img-responsive" border="solid 1px;"/>
+					<img src="images/blurByN.png" onclick="blancoYnegro();" width="200" height="200" class="img-rounded" class="img-responsive" border="solid 1px;"/>
+					<img src="images/saturado.png" onclick="saturar();" width="200" height="200" class="img-rounded" class="img-responsive" border="solid 1px;"/>
+					<img src="images/blurByN.png" onclick="blurByN();" width="200" height="200" class="img-rounded" class="img-responsive" border="solid 1px;"/>
+					<img src="images/binarizacion.png" onclick="blurByN();" width="200" height="200" class="img-rounded" class="img-responsive" border="solid 1px;"/>
+				</div>
+<button onclick="binarizacion();">binarizacion</button>
+			</div>
+
+						<!--
+
+						<button onclick="blancoYnegro();">blanco Y negro</button>
+
+						<input type="number" id="cantBrillo" value="">
+						<button type="button" onclick="subirBrillo();" name="button">Aplicar brillo</button>
+						<button onclick="binarizacion();">binarizacion</button>
+						<button onclick="sepia();">sepia</button>
+						<button onclick="blurByN();">Blur</button>
+						<button onclick="saturar();">saturacion</button>
+					-->
+
 
 
 
