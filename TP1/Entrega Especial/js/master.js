@@ -1,3 +1,4 @@
+
 var ctx = document.getElementById("canvas").getContext("2d");
 var ctxOrigen = document.getElementById("canvasOrigen").getContext("2d");
 var imagen = new Image();

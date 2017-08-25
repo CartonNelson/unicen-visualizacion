@@ -36,7 +36,7 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-1">
 						<h2>Imagen Original</h2>
-							<canvas id="canvasOrigen" width="400" height="400" style="border:#000 solid 1px;" />
+							<canvas id="canvasOrigen" width="300" height="300" style="border:#000 solid 1px;" />
 
 					</div>
 					<div class="col-md-4 col-md-offset-1">
@@ -48,7 +48,7 @@
 
 						</div>
 
-						<canvas id="canvas" width="400" height="400" style="border:#000 solid 1px;" />
+						<canvas id="canvas" width="300" height="300" style="border:#000 solid 1px;" />
 					</div>
 					<div class="col-md-1 col-md-offset-6">
 						<br>
@@ -63,11 +63,7 @@
 			</div>
 			<br>
 			<br>
-
-
-			<br>
-			<br>
-			<div class="container filtros">
+	<!--		<div class="container filtros">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-2">
@@ -89,7 +85,13 @@
 							<label>Blur</label>
 								<img src="images/blurByN.png" onclick="blurByN();" width="180" height="180" class="img-rounded" class="img-responsive" border="solid 1px;"/>
 						</div>
+					</div>
+				</div>
+			</div>
 
+			<div class="container filtros">
+				<div class="row">
+					<div class="col-md-12">
 						<div class="col-md-2">
 							<label>Binarizacion</label>
 							<img src="images/binarizacion.png" onclick="binarizacion();" width="180" height="180" class="img-rounded" class="img-responsive" border="solid 1px;"/>
@@ -100,30 +102,54 @@
 							<img src="images/negativo.png" onclick="negativo();" width="180" height="180" class="img-rounded" class="img-responsive" border="solid 1px;"/>
 						</div>
 
-
-
-
-
-					<div>
+					</div>
 				</div>
-
 			</div>
 
-						<!--
+		-->
+		<div class="container">
+			<div class="row">
+				<div class="span12 col-md-12">
+		    	    <div class="well">
+		                <div id="myCarousel" class="carousel slide">
 
-						<button onclick="blancoYnegro();">blanco Y negro</button>
-						<button onclick="binarizacion();">binarizacion</button>
-						<button onclick="blancoYnegro();">blanco Y negro</button>
+		                <ol class="carousel-indicators">
+		                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 
-						<button onclick="binarizacion();">binarizacion</button>
-						<button onclick="sepia();">sepia</button>
-						<button onclick="blurByN();">Blur</button>
-						<button onclick="saturar();">saturacion</button>
-					-->
+		                </ol>
+
+		                <!-- Carousel items -->
+		                <div class="carousel-inner">
+
+		                <div class="item active">
+		                	<div class="row-fluid">
+
+											<img src="images/sepia.png" onclick="sepia();" width="180" height="180" class="img-rounded col-md-offset-2" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
+		                	<img src="images/blancoYnegro.png" onclick="blancoYnegro();" width="180" height="180" class="img-rounded col-md-offset-1" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
+		                	<img src="images/saturado.png" onclick="saturar();" width="180" height="180" class="img-rounded  col-md-offset-1" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
+		                	</div><!--/row-fluid-->
+		                </div><!--/item-->
+
+										<div class="item">
+											<div class="row-fluid">
+											<img src="images/blurByN.png" onclick="blurByN();" width="180" height="180" class="img-rounded col-md-offset-2" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
+											<img src="images/binarizacion.png" onclick="binarizacion();" width="180" height="180" class="img-rounded col-md-offset-1" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
+											<img src="images/negativo.png" onclick="negativo();" width="180" height="180" class="img-rounded col-md-offset-1" class="img-responsive" border="solid 1px;" style="max-width:100%;"/>
+											</div><!--/row-fluid-->
+									</div><!--/item-->
+		                </div><!--/carousel-inner-->
 
 
+		                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+		                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+		                </div><!--/myCarousel-->
 
+		            </div><!--/well-->
+				</div>
+			</div>
+		</div>
 
+</div>
 			 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
 
 			 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
