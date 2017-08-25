@@ -35,6 +35,21 @@ ctx.drawImage(img, 0, 0, img.width,img.height);
 ctxOrigen.drawImage(img, 0, 0, img.width,img.height);
 }
 
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+
+/**
+ * The event handler for the link's onclick event. We give THIS as a
+ * parameter (=the link element), ID of the canvas and a filename.
+*/
+document.getElementById('descarga').addEventListener('click', function() {
+    downloadCanvas(this, 'canvas', 'ImgModificada.png');
+}, false);
+
+
+
 //genero imagen
 function setPixel (imageData,x,y,r,g,b,a){
 
@@ -63,32 +78,49 @@ return imageData.data[index+2];
 }
 
 
-function saturar(){
-
-imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-
-for (x=0 ; x<canvas	.width; x++){
-  for (y=0; y<canvas.height; y++){
-
-    var r=getRed(imageData,x,y);
-    var g=getGreen(imageData,x,y);
-    var b=getBlue(imageData,x,y);
-    var rgb=[r,g,b];
-    var hsv= RGBtoHSV (rgb);
-    hsv[1] *= 2.2;
-    var rgb= HSVtoRGB(hsv);
-    r=rgb[0];
-    g=rgb[1];
-    b=rgb[2];
-
-    setPixel(imageData,x,y,r,g,b,255);
+//aplico el filtro negativo
+function negativo(){
+  imageData = ctxOrigen.getImageData(0,0,imagen.width,imagen.height);
+  for (x=0 ; x<imagen.width; x++){
+    for (y=0; y<imagen.height; y++){
+      var r=getRed(imageData,x,y);
+      var g=getGreen(imageData,x,y);
+      var b=getBlue(imageData,x,y);
+      setPixel(imageData,x,y,(255-r),(255-g),(255-b),255);
+    }
   }
-}
-//vuelvo a dibujar la img con el filtro aplicado
-
-//ctx.putImageData(imageData,0,0,);
+  //vuelvo a dibujar la img con el filtro aplicado
   ctx.putImageData(imageData,0,0);
 }
+
+
+//funcion saturado con valor fijo de 2.2
+function saturar(){
+
+  imageData = ctxOrigen.getImageData(0,0,canvas.width,canvas.height);
+
+  for (x=0 ; x<canvas	.width; x++){
+    for (y=0; y<canvas.height; y++){
+
+      var r=getRed(imageData,x,y);
+      var g=getGreen(imageData,x,y);
+      var b=getBlue(imageData,x,y);
+      var rgb=[r,g,b];
+      var hsv= RGBtoHSV (rgb);
+      hsv[1] *= 2.2;
+      var rgb= HSVtoRGB(hsv);
+      r=rgb[0];
+      g=rgb[1];
+      b=rgb[2];
+
+      setPixel(imageData,x,y,r,g,b,255);
+    }
+  }
+  //vuelvo a dibujar la img con el filtro aplicado
+
+
+    ctx.putImageData(imageData,0,0);
+  }
 
 
 
@@ -185,7 +217,7 @@ function RGBtoHSV (color) {
 
 //aplico filtro sepia
 function sepia(){
-  imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+  imageData = ctxOrigen.getImageData(0,0,canvas.width,canvas.height);
 
   for (x=0 ; x<canvas	.width; x++){
     for (y=0; y<canvas.height; y++){
@@ -193,9 +225,6 @@ function sepia(){
       var r=getRed(imageData,x,y);
       var g=getGreen(imageData,x,y);
       var b=getBlue(imageData,x,y);
-      //r=(0.3*r);
-      //g=(0,59*g);
-      //b=(0,11*b);
       var pixel=((r*0.3)+(g*0.59)+(b*0.11));
       setPixel(imageData,x,y,pixel+100,pixel+50,pixel,255);
     }
@@ -214,8 +243,8 @@ function blurByN(){
                 1/9,  1/9, 1/9,
                 1/9, 1/9,  1/9 ];
 
-              console.log(sobel_x);
-    var imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
+
+    var imageData = ctxOrigen.getImageData(0,0,imagen.width,imagen.height);
     var aux = ctx.getImageData(0,0,imagen.width,imagen.height);
 
     for (x=1 ; x<imagen.width-1; x++){
@@ -238,7 +267,7 @@ function blurByN(){
 
 //aplico binarizacion
 function binarizacion(){
-  imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
+  imageData = ctxOrigen.getImageData(0,0,imagen.width,imagen.height);
 
   for (x=0 ; x<imagen.width; x++){
     for (y=0; y<imagen.height; y++){
@@ -247,7 +276,7 @@ function binarizacion(){
       var g=((getGreen(imageData,x,y)));
       var b=((getBlue(imageData,x,y)));
       var grayScale =  (0.299 * r + 0.587 * g + 0.114 * b);
-      if(grayScale>170){
+      if(grayScale>120){
         r=255;
         g=255;
         b=255;
@@ -288,7 +317,7 @@ function subirBrillo(){
 
 //aplico el filtro ByN
 function blancoYnegro(){
-  imageData = ctx.getImageData(0,0,imagen.width,imagen.height);
+  imageData = ctxOrigen.getImageData(0,0,imagen.width,imagen.height);
   for (x=0 ; x<imagen.width; x++){
     for (y=0; y<imagen.height; y++){
       var pixelbyn=(getRed(imageData,x,y)+getGreen(imageData,x,y)+getBlue(imageData,x,y)/3);
