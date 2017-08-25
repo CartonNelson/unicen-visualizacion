@@ -34,7 +34,7 @@ reader.readAsDataURL(file.files[0]);
 function myDrawImageMethod(img){
 ctx.drawImage(img, 0, 0, img.width,img.height);
 ctxOrigen.drawImage(img, 0, 0, img.width,img.height);
-setBrillo();
+$('#cantBrillo').val("");
 }
 
 function downloadCanvas(link, canvasId, filename) {
