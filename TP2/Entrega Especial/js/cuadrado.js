@@ -1,19 +1,25 @@
-class cuadrado {
+ class cuadrado {
 
 
-   cuadrado(posX,posY,lado) {
+   constructor(posX,posY,lado,color) {
     this.posX=posX;
     this.posY=posY;
-    this.width=lado;
-    this.height=lado;
+    this.lado=lado;
+    this.color=color;
 
   }
 
-  dibujar(){
-    var c=document.getElementById("canvas");
-    var ctx=c.getContext("2d");
-    ctx.rect(this.posX,this.posY,this.width,this.height);
-    ctx.stroke();
-  }
 
-};
+
+}
+cuadrado.prototype.dibujar=function(){
+  var c=document.getElementById("canvas");
+  var ctx=c.getContext("2d");
+
+  ctx.fillStyle=this.color;
+  ctx.beginPath();
+  ctx.rect(this.posX,this.posY,this.lado,this.lado);
+  ctx.fill();
+  ctx.stroke();
+  ctx.closePath();
+}

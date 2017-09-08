@@ -23,11 +23,11 @@ constructor (x,y,radio){
     var y =   Math.pow((clix-this.posX),2);
     var d1 = Math.sqrt(x+y);
 
-      if(d1<this.radio){
-            console.log("atroden");
-            }else{
-              console.log("afuera padre");
-            }
+        if(d1<this.radio){
+              console.log("atroden");
+              }else{
+                console.log("afuera padre");
+              }
 
   }
 

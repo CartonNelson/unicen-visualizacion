@@ -1,10 +1,19 @@
 class hexagono {
-  constructor(x,y) {
+  constructor(x,y,radio) {
     this.posX=x;
     this.posY=y;
+    this.radio=radio;
   }
 
+
+  setX(x){
+    this.posX=x;
+  }
+  setY(y){
+    this.posY=y;
+  }
   dibujar(){
+
     var ctx=document.getElementById("canvas").getContext('2d');
     //
     ctx.fillStyle = "#6ab150";
@@ -13,7 +22,7 @@ class hexagono {
 
         var X = 0;
         var Y = 0;
-        var R = 100;
+        var R = this.radio;
 
         var L = 6;
         // si L == 6 el ángulo es de 2π/6 o sea 60°
@@ -33,5 +42,22 @@ class hexagono {
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
+        this.crearCirculo();
   }
+
+  crearCirculo(){
+    ctx.beginPath();
+    ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
+      ctx.fill();
+    ctx.closePath();
+  }
+
+  seleccion(clix,cliy){
+    var x =   Math.pow((clix-this.posX),2);
+    var y =   Math.pow((clix-this.posX),2);
+    var d1 = Math.sqrt(x+y);
+
+      return this.radio>d1;
+  }
+
 }
