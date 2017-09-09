@@ -9,12 +9,15 @@ class poligono {
 
 
 poligono.prototype.dibujar = function () {
+
+					  ctx.fillStyle = this.color;
+            ctx.strokeStyle="black";
+            ctx.lineWidth = 3;
+            var L=6;
             var R =this.radio;
-					  var X = this.posX;
-					  var Y = this.posY;
-					  ctx.fillStyle = "#6ab150";
-					  // un angulo de 60deg.
-					  var rad = ( Math.PI / 180 ) * 60;
+            var X = this.posX;
+            var Y = this.posY;
+            var rad = (2*Math.PI)/L;
 					  ctx.beginPath();
 					  for( var i = 0; i<6; i++ ){
 					  x = X + R * Math.cos( rad*i );
@@ -23,6 +26,7 @@ poligono.prototype.dibujar = function () {
 					  }
 					  ctx.closePath();
 					  ctx.fill();
+            ctx.stroke();
 };
 
 poligono.prototype.seleccionar=function(clix,cliy){

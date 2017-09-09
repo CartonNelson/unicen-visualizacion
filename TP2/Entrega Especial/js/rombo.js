@@ -20,12 +20,6 @@ rombo.prototype.dibujar=function(){
       var L = 4;
       // si L == 6 el ángulo es de 2π/6 o sea 60°
       var rad = (2*Math.PI)/L;
-      // traslada el contexto en el centro del canvas
-      // para poder girar el contexto alrededor del centro
-      //ctx.translate(this.posX, this.posY);
-      //gira el contexto unos 270deg
-      //ctx.rotate(3*Math.PI/2);
-      // dibuja el trazado
       ctx.beginPath();
           for(var i = 0; i < L; i++ ){
           var x = X + R * Math.cos( rad*i );

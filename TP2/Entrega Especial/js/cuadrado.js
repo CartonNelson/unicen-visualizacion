@@ -27,6 +27,7 @@ cuadrado.prototype.dibujar=function(){
 cuadrado.prototype.seleccionar = function (clix,cliy) {
   var c=document.getElementById("canvas");
   var fig = c.getBoundingClientRect();
-  return(this.posX < (clix - fig.left)) && (this.lado + this.posX > (clix - fig.left)) && (this.posY < (cliy- fig.top)) && (this.lado + this.posY > (cliy- fig.top));
+  return(this.posX < (clix - fig.left)) && (this.lado + this.posX > (clix - fig.left)) &&
+  (this.posY < (cliy- fig.top)) && (this.lado + this.posY > (cliy- fig.top));
 
 }

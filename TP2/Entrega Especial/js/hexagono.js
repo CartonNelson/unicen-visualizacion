@@ -30,7 +30,7 @@ ctx.stroke();
 
   hexagono.prototype.seleccionar = function (clix,cliy) {
     var x =   Math.pow((clix-this.posX),2);
-    var y =   Math.pow((clix-this.posX),2);
+    var y =   Math.pow((clix-this.posY),2);
     var d1 = Math.sqrt(x+y);
 
       return (d1<this.radio);

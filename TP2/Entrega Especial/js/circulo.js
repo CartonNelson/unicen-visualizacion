@@ -12,6 +12,7 @@ class circulo {
 
 circulo.prototype.dibujar = function () {
   ctx.fillStyle = this.color;
+  ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
   ctx.fill();

@@ -13,8 +13,8 @@ rectangulo.prototype.dibujar=function(){
   var c=document.getElementById("canvas");
   var ctx=c.getContext("2d");
   ctx.fillStyle=this.color;
+  ctx.lineWidth = 3;
   ctx.beginPath();
-
   ctx.rect(this.posX,this.posY,this.w,this.h);
   ctx.fill();
   ctx.stroke();
@@ -24,6 +24,7 @@ rectangulo.prototype.dibujar=function(){
 rectangulo.prototype.seleccionar = function (clix,cliy) {
   var c=document.getElementById("canvas");
   var fig = c.getBoundingClientRect();
-  return(this.posX < (clix - fig.left)) && (this.w + this.posX > (clix - fig.left)) && (this.posY < (cliy- fig.top)) && (this.h + this.posY > (cliy- fig.top));
-
+  return (this.posX < (clix - fig.left)) && (this.w + this.posX > (clix - fig.left)) &&
+  (this.posY < (cliy- fig.top)) && (this.h + this.posY > (cliy- fig.top));
+  //(clix>=this.posX && clix<=this.posX+this.w && cliy>=this.posY && cliy<=this.posY+this.h);
 }
