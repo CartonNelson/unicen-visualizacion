@@ -1,14 +1,15 @@
 class rombo {
-  constructor(x,y,radio) {
+  constructor(x,y,radio,color) {
     this.posX=x;
     this.posY=y;
     this.radio=radio;
+    this.color=color;
   }
 }
 rombo.prototype.dibujar=function(){
   var ctx=document.getElementById("canvas").getContext('2d');
   //
-  ctx.fillStyle = "#777777";
+  ctx.fillStyle = this.color;
       ctx.strokeStyle = "black";
       ctx.lineWidth = 3;
 
@@ -34,4 +35,11 @@ rombo.prototype.dibujar=function(){
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
+}
+rombo.prototype.seleccionar=function(clix,cliy){
+  var x =   Math.pow((clix-this.posX),2);
+  var y =   Math.pow((cliy-this.posY),2);
+  var d1 = Math.sqrt(x+y);
+      return(d1<this.radio);
+
 }

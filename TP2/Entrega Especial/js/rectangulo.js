@@ -20,3 +20,10 @@ rectangulo.prototype.dibujar=function(){
   ctx.stroke();
   ctx.closePath();
 }
+
+rectangulo.prototype.seleccionar = function (clix,cliy) {
+  var c=document.getElementById("canvas");
+  var fig = c.getBoundingClientRect();
+  return(this.posX < (clix - fig.left)) && (this.w + this.posX > (clix - fig.left)) && (this.posY < (cliy- fig.top)) && (this.h + this.posY > (cliy- fig.top));
+
+}

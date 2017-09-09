@@ -1,32 +1,69 @@
+var canvas=document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var seleccion=[];
+var figuras =[];
 
-var ctx =document.getElementById("canvas").getContext("2d");
+var circ = new circulo(100,100,50,'black');
+var cuad = new cuadrado(50,200,100,'grey');
+var rom= new rombo(100,400,50,'#563456');
+var pol= new poligono(100,500,50,'blue');
+var rec = new rectangulo(50,600,100,50,'red');
+//-----------------------------------
+figuras.push(circ,cuad,rom,pol,rec);
+console.log(figuras);
+for (var i = 0; i < figuras.length; i++) {
+  figuras[i].dibujar();
+  seleccion[i]=false;
+}
 
-var cuad1 = new cuadrado(300,300,150,'grey');
-
-var pol1= new poligono(200,200,100,'blue');
 
 
+//
+//var sem1= new semicirculo(300,300,50);
+//var circ1= new hexagono(200,200,100);
+//var circ1 = new triangulo(100,600,100,'#877645');
+//
 
-var circ1 = new circulo(700,400,30,'black');
-var rec1 = new rectangulo(500,200,100,200,'red');
-
-var sem1= new semicirculo(300,300,50);
-
-var tri1 = new triangulo(200,200);
-var rom= new rombo(550,200,100);
-var hex= new hexagono(200,200,100);
-
-cuad1.dibujar();
-circ1.dibujar();
-rec1.dibujar();
-pol1.dibujar();
+//cuad1.dibujar();
+//rec1.dibujar();
+//pol1.dibujar();
 //rom.dibujar();
-
-
-//sem1.dibujar();
 //tri1.dibujar();
 
-//hex.dibujar();
+
+canvas.onmousedown=function(event){
+  console.log(event);
+  for (var i = 0; i < figuras.length; i++){
+    if(figuras[i].seleccionar(event.clientX,event.clientY)){
+      console.log("adentro");
+      seleccion[i] = true;
+      figuras[i].x = event.clientX;
+      figuras[i].y = event.clientY;
+    }else{
+      console.log("afuera");
+    }
+  }
 
 
-//circ1.dibujar(100,100,23);
+  canvas.onmousemove = function(event) {
+
+      for (var i = 0; i < figuras.length; i++) {
+
+        if(seleccion[i]){
+          figuras[i].posX = event.clientX;
+          figuras[i].posY = event.clientY;
+          ctx.clearRect(0,0,canvas.width, canvas.height);
+          for (var i = 0; i < figuras.length; i++) {
+            figuras[i].dibujar();
+          }
+
+        }
+      }
+    }
+}
+canvas.onmouseup = function(event) {
+  canvas.onmousemove = null;
+  for (var i = 0; i < figuras.length; i++) {
+    seleccion[i] = false;
+  }
+}

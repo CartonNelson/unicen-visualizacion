@@ -1,35 +1,37 @@
 class triangulo {
-  constructor(x,y) {
+  constructor(x,y,radio,color) {
     this.posX=x;
     this.posY=y;
-  }
+    this.color=color;
+    this.radio=radio;
 
-  dibujar(){
-    ctx.fillStyle = "#6ab150";
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 3;
-
-        var X = 0;
-        var Y = 0;
-        var R = 100;
-
-        var L = 3;
-        // si L == 6 el ángulo es de 2π/6 o sea 60°
-        var rad = (2*Math.PI)/L;
-        // traslada el contexto en el centro del canvas
-        // para poder girar el contexto alrededor del centro
-        ctx.translate(this.posX,this.posY);
-        //gira el contexto unos 270deg
-        ctx.rotate(3*Math.PI/2);
-        // dibuja el trazado
-        ctx.beginPath();
-            for(var i = 0; i < L; i++ ){
-            var x = X + R * Math.cos( rad*i );
-            var y = Y + R * Math.sin( rad*i );
-            ctx.lineTo(x, y);
-            }
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
   }
 }
+
+  triangulo.prototype.dibujar=function(){
+
+    // triangle 4, at right, top
+     ctx.beginPath();
+     ctx.arc(this.posX,this.posY+100,this.radio,0,Math.PI * 2);
+     ctx.strokeStyle = "#00F";
+     ctx.moveTo(this.posX, this.posY); // pick up "pen," reposition at 500 (horiz), 0 (vert)
+     ctx.lineTo(this.posX-100,this.posY+200); // draw straight down by 200px (200 + 200)
+     ctx.lineTo(this.posX+100, this.posY+200); // draw up toward left (100 less than 300, so left)
+     ctx.closePath(); // connect end to start
+     ctx.stroke(); // outline the shape that's been described
+
+}
+
+
+
+triangulo.prototype.seleccionar = function (clix,cliy) {
+  //var c=document.getElementById("canvas");
+  //var fig = c.getBoundingClientRect();
+  //return(this.posX < (clix - fig.left)) && (this.lado + this.posX > (clix - fig.left)) && (this.posY < (cliy- fig.top)) && (this.lado + this.posY > (cliy- fig.top));
+  var x =   Math.pow((clix-this.posX),2);
+  var y =   Math.pow((cliy-this.posY+100),2);
+  var d1 = Math.sqrt(x+y);
+  
+      return(d1<100);
+
+};

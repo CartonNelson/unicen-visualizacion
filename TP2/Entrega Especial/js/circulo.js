@@ -20,14 +20,10 @@ circulo.prototype.dibujar = function () {
 
 
 
-
-circulo.prototype.detectarPunto = function (clientX,clientY) {
-  //formula p detectar la ubicacion del mouse dentro del circulo
- var a = Math.pow((clientX-this.posX),2);
- var b = Math.pow((clientY-this.posY),2);
- var c = a + b;
- var result = Math.sqrt(c);
- return this.radio > result;
-
+circulo.prototype.seleccionar=function(clix,cliy){
+  var x =   Math.pow((clix-this.posX),2);
+  var y =   Math.pow((cliy-this.posY),2);
+  var d1 = Math.sqrt(x+y);
+      return(d1<this.radio);
 
 }
