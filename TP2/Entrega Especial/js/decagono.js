@@ -1,4 +1,4 @@
-class hexagono {
+class decagono {
   constructor(x,y,radio,color) {
     this.posX=x;
     this.posY=y;
@@ -7,11 +7,11 @@ class hexagono {
   }
 }
 
-hexagono.prototype.dibujar = function () {
+decagono.prototype.dibujar = function () {
   ctx.fillStyle = this.color;
   ctx.strokeStyle="black";
   ctx.lineWidth = 3;
-  var L=6;
+  var L=10;
   var R =this.radio;
   var X = this.posX;
   var Y = this.posY;
@@ -31,7 +31,7 @@ hexagono.prototype.dibujar = function () {
 
 
 
-  hexagono.prototype.seleccionar = function (clix,cliy) {
+  decagono.prototype.seleccionar = function (clix,cliy) {
     var x =   Math.pow((clix-this.posX),2);
     var y =   Math.pow((cliy-this.posY),2);
     var d1 = Math.sqrt(x+y);

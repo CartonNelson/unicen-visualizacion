@@ -1,3 +1,11 @@
+#canvas{
+background-image:url("../images/fondo.jpg");
+background-repeat: no-repeat;
+}
+
 body{
-background-color: red;
+}
+img.resize {
+    width:100%; /* you can use % */
+    height: 100%;
 }

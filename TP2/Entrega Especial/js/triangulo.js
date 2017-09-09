@@ -11,7 +11,8 @@ class triangulo {
   triangulo.prototype.dibujar=function(){
 
     // triangle 4, at right, top
-    ctx.fillStyle="blue";
+    ctx.fillStyle=this.color;
+    ctx.strokeStyle="black";
     ctx.lineWidth = 3;
      ctx.beginPath();
 

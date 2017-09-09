@@ -24,7 +24,7 @@ rectangulo.prototype.dibujar=function(){
 rectangulo.prototype.seleccionar = function (clix,cliy) {
   var c=document.getElementById("canvas");
   var fig = c.getBoundingClientRect();
-  return (this.posX < (clix - fig.left)) && (this.w + this.posX > (clix - fig.left)) &&
-  (this.posY < (cliy- fig.top)) && (this.h + this.posY > (cliy- fig.top));
+  return (this.posX-canvas.offsetLeft < (clix - fig.left)) && (this.w + this.posX-canvas.offsetLeft > (clix - fig.left)) &&
+  (this.posY-canvas.offsetTop < (cliy- fig.top)) && (this.h + this.posY-canvas.offsetTop > (cliy- fig.top));
   //(clix>=this.posX && clix<=this.posX+this.w && cliy>=this.posY && cliy<=this.posY+this.h);
 }
