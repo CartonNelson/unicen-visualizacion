@@ -9,7 +9,20 @@
 	</head>
 
 	<body>
-		<br>
+		<div id="cartel"class="container">
+			<strong>&times;</strong>
+		</div>
+
+	<!-- The Modal -->
+							<div id="myModal" class="modal">
+
+  							<!-- Modal content -->
+  							<div class="modal-content">
+    						<span class="close">&times;</span>
+								<h2>ganaste</h2>
+  						</div>
+
+						</div>
 		<br>
 		<br>
 		<div class="container">
@@ -24,8 +37,22 @@
 											<option value="9">Dificil</option>
 
 										</select>
-									</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<label for="">Tiempo</label>
+								<div id="contenedor">
+
+									<div class="reloj" id="Horas">00</div>
+									<div class="reloj" id="Minutos">:00</div>
+									<div class="reloj" id="Segundos">:00</div>
+								</div>
+							</div>
+						</div>
+
+
 				</div>
+
 				<div class="col-md-offset-2">
 					<canvas id="canvas" width="1050" height="500" style="border:#000 solid 1px;" />
 				</div>
@@ -51,5 +78,6 @@
 	<script type="text/javascript" src="js/circulo.js"></script>
 	<script type="text/javascript" src="js/heptagono.js"></script>
 	<script type="text/javascript" src="js/decagono.js"></script>
+		<script type="text/javascript" src="js/cronometro.js"></script>
 	<script type="text/javascript" src="js/master.js"></script>
 </html>

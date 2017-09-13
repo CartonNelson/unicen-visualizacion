@@ -1,34 +1,40 @@
 var canvas=document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-
 var seleccion=[];
 var figuras =[];
 var figurasFijas=[];
 var dificultad;
-var aciertos=0;
+var aciertos;
+var cronom= new cronometro();
+function inicializarObj(){
+  aciertos=0;
+  //figuras encastrables
+  var tri = new triangulo(100,50,50,'#877645');
+  var circ = new circulo(100,250,50,'brown');
+  var cuad = new cuadrado(50,350,90,'grey');
+  var dec =new decagono(250,100,50,"red");
+  var hep = new heptagono(250,250,50,"violet")
+  var hex= new hexagono(250,400,50,"orange");
+  var pen= new pentagono(400,100,50,'yellow');
+  var rec = new rectangulo(350,215,110,70,'green');
+  var rom= new rombo(400,400,50,'#563456');
 
-//figuras encastrables
-var tri = new triangulo(100,50,50,'#877645');
-var circ = new circulo(100,250,50,'brown');
-var cuad = new cuadrado(50,350,90,'grey');
-var dec =new decagono(250,100,50,"red");
-var hep = new heptagono(250,250,50,"violet")
-var hex= new hexagono(250,400,50,"orange");
-var pen= new pentagono(400,100,50,'yellow');
-var rec = new rectangulo(350,215,110,70,'green');
-var rom= new rombo(400,400,50,'#563456');
+  //figuras fijas
+  var triFijo = new triangulo(800,200,50,'white');
+  var recFijo = new rectangulo(600,70,110,70,'white');
+  var hepFijo = new heptagono(650,250,50,"white")
+  var romFijo= new rombo(650,400,50,'white');
+  var cuadFijo = new cuadrado(750,50,90,'white');
 
-//figuras fijas
-var triFijo = new triangulo(800,200,50,'white');
-var recFijo = new rectangulo(600,70,110,70,'white');
-var hepFijo = new heptagono(650,250,50,"white")
-var romFijo= new rombo(650,400,50,'white');
-var cuadFijo = new cuadrado(750,50,90,'white');
+  var decFijo =new decagono(800,400,50,"white");
+  var hexFijo= new hexagono(930,100,50,"white");
+  var circFijo = new circulo(930,250,50,'white');
+  var penFijo= new pentagono(930,400,50,'white');
 
-var decFijo =new decagono(800,400,50,"white");
-var hexFijo= new hexagono(930,100,50,"white");
-var circFijo = new circulo(930,250,50,'white');
-var penFijo= new pentagono(930,400,50,'white');
+
+  figurasFijas.push(triFijo,circFijo,cuadFijo,decFijo,hepFijo,hexFijo,penFijo,recFijo,romFijo);
+  figuras.push(tri,circ,cuad,dec,hep,hex,pen,rec,rom);
+}
 
 
 //-----------------------------------
@@ -36,23 +42,25 @@ var penFijo= new pentagono(930,400,50,'white');
 
 //figurasFijas.push(recFijo,hepFijo,romFijo,cuadFijo,triFijo,decFijo,hexFijo,circFijo,penFijo);
 
-figurasFijas.push(triFijo,circFijo,cuadFijo,decFijo,hepFijo,hexFijo,penFijo,recFijo,romFijo);
-figuras.push(tri,circ,cuad,dec,hep,hex,pen,rec,rom);
+
 $('#dificultad').change(function() {
-
- dificultad=($('#dificultad').val());
-
+  dificultad=($('#dificultad').val());
   iniciar(dificultad);
+  cronom.inicio();
+  $("#cartel").append('<div class="alert alert-danger">');
+  $("#cartel").append('<strong>Danger!</strong>');
+  $("#cartel").append('</div>');
+
 });
 //inicia tablero con dificultad seleccionada
 function iniciar(dificultad){
+
   ctx.clearRect(0,0,canvas.width, canvas.height);
+  inicializarObj();
   for (var i = 0; i < dificultad; i++) {
+    figurasFijas[i].dibujar();
+    figuras[i].dibujar();
 
-
-
-      figuras[i].dibujar();
-      figurasFijas[i].dibujar();
       seleccion[i]=false;
     }
 
@@ -64,6 +72,7 @@ function iniciar(dificultad){
 canvas.onmousedown=function(event){
   for (var i = 0; i < dificultad; i++){
     if(figuras[i].seleccionar(event.clientX-canvas.offsetLeft,event.clientY-canvas.offsetTop)){
+
       seleccion[i] = true;
       var figura=figuras[i];
       figuras[i].posX = event.clientX-canvas.offsetLeft;
@@ -81,9 +90,11 @@ canvas.onmousedown=function(event){
           figuras[i].posX = event.clientX-canvas.offsetLeft;
           figuras[i].posY = event.clientY-canvas.offsetTop;
           ctx.clearRect(0,0,canvas.width, canvas.height);
-
           for (var i = 0; i < dificultad; i++) {
             figurasFijas[i].dibujar();
+              }
+          for (var i = 0; i < dificultad; i++) {
+
             figuras[i].dibujar();
 
 
@@ -97,10 +108,11 @@ canvas.onmousedown=function(event){
 
         for (var i = 0; i < dificultad; i++) {
           if (figurasFijas[i].seleccionar(event.clientX-canvas.offsetLeft,event.clientY-canvas.offsetTop)&&figurasFijas[i].comparaFigura(figura.id)) {
-            console.log("if");
-            console.log(figura.id);
-            console.log(figurasFijas[i].id);
+            //console.log("if");
+            //console.log(figura.id);
+            //console.log(figurasFijas[i].id);
             aciertos+=1;
+            alert(aciertos);
             figura.colocar(figurasFijas[i].posX,figurasFijas[i].posY);
             ctx.clearRect(0,0,canvas.width, canvas.height);
 
@@ -111,11 +123,16 @@ canvas.onmousedown=function(event){
         }
           for (var i = 0; i < dificultad; i++) {
             figurasFijas[i].dibujar();
+
+          }
+          for (var i = 0; i < dificultad; i++) {
             figuras[i].dibujar();
           }
 
           if (aciertos==dificultad) {
-            alert("win");
+            cronom.parar();
+
+
         }
 
         }

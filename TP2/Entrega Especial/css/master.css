@@ -10,3 +10,15 @@ img.resize {
     width:100%; /* you can use % */
     height: 100%;
 }
+
+#contenedor{
+	margin: auto;
+	width: 140px;
+	height: 100px;
+}
+.reloj{
+	float: left;
+	font-size: 25px;
+	font-family: Courier,sans-serif;
+	color: #363431;
+}
