@@ -8,6 +8,12 @@ class pentagono {
   }
 }
 
+pentagono.prototype.posInicial = function () {
+  this.posX=400;
+  this.posY=100;
+  this.radio=50;
+  this.color='yellow';
+};
 
 pentagono.prototype.dibujar = function () {
 

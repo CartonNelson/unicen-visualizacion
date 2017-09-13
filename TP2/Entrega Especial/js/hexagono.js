@@ -7,7 +7,12 @@ class hexagono {
     this.id=6;
   }
 }
-
+hexagono.prototype.posInicial = function () {
+  this.posX=250;
+  this.posY=400;
+  this.radio=50;
+  this.color='orange';
+};
 hexagono.prototype.dibujar = function () {
   ctx.fillStyle = this.color;
   ctx.strokeStyle="black";

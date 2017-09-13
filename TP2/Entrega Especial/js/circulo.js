@@ -10,6 +10,12 @@ class circulo {
 
 
 }
+circulo.prototype.posInicial = function () {
+  this.posX=100;
+  this.posY=250;
+  this.radio=50;
+  this.color='brown';
+};
 
 circulo.prototype.dibujar = function () {
   ctx.fillStyle = this.color;

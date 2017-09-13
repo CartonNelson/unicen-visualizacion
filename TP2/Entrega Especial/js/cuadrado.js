@@ -13,6 +13,12 @@
 
 
 }
+cuadrado.prototype.posInicial = function () {
+  this.posX=50;
+  this.posY=350;
+  this.radio=90;
+  this.color='grey';
+};
 cuadrado.prototype.dibujar=function(){
   var c=document.getElementById("canvas");
   var ctx=c.getContext("2d");

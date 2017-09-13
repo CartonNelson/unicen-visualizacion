@@ -7,6 +7,13 @@ class rombo {
     this.id=9;
   }
 }
+
+rombo.prototype.posInicial = function () {
+  this.posX=400;
+  this.posY=400;
+  this.radio=50;
+  this.color='#563456';
+};
 rombo.prototype.dibujar=function(){
   var ctx=document.getElementById("canvas").getContext('2d');
   //

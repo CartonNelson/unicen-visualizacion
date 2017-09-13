@@ -7,7 +7,12 @@ class decagono {
     this.id=4;
   }
 }
-
+decagono.prototype.posInicial = function () {
+  this.posX=250;
+  this.posY=100;
+  this.radio=50;
+  this.color='red';
+};
 decagono.prototype.dibujar = function () {
   ctx.fillStyle = this.color;
   ctx.strokeStyle="black";

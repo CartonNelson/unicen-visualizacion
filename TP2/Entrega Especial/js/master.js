@@ -3,11 +3,12 @@ var ctx = canvas.getContext("2d");
 var seleccion=[];
 var figuras =[];
 var figurasFijas=[];
+var origen=[];
 var dificultad;
-var aciertos;
+var aciertos=0;
 var cronom= new cronometro();
-function inicializarObj(){
-  aciertos=0;
+
+
   //figuras encastrables
   var tri = new triangulo(100,50,50,'#877645');
   var circ = new circulo(100,250,50,'brown');
@@ -31,32 +32,28 @@ function inicializarObj(){
   var circFijo = new circulo(930,250,50,'white');
   var penFijo= new pentagono(930,400,50,'white');
 
-
+  //cargo arreglos de figuras movibles y fijas
   figurasFijas.push(triFijo,circFijo,cuadFijo,decFijo,hepFijo,hexFijo,penFijo,recFijo,romFijo);
   figuras.push(tri,circ,cuad,dec,hep,hex,pen,rec,rom);
-}
-
 
 //-----------------------------------
-//cargo arreglos de figuras movibles y fijas
 
-//figurasFijas.push(recFijo,hepFijo,romFijo,cuadFijo,triFijo,decFijo,hexFijo,circFijo,penFijo);
-
-
-$('#dificultad').change(function() {
+$('#comenzar').click(function() {
+  resetFiguras();
+  cronom.reinicio();
+  aciertos=0;
   dificultad=($('#dificultad').val());
   iniciar(dificultad);
   cronom.inicio();
-  $("#cartel").append('<div class="alert alert-danger">');
-  $("#cartel").append('<strong>Danger!</strong>');
-  $("#cartel").append('</div>');
+    //$("#cartel").append('<div class="alert alert-danger">');
+    //$("#cartel").append('<strong>'+Danger!+'</strong>');
+    //$("#cartel").append('</div>');
 
 });
 //inicia tablero con dificultad seleccionada
 function iniciar(dificultad){
 
   ctx.clearRect(0,0,canvas.width, canvas.height);
-  inicializarObj();
   for (var i = 0; i < dificultad; i++) {
     figurasFijas[i].dibujar();
     figuras[i].dibujar();
@@ -68,7 +65,12 @@ function iniciar(dificultad){
 
 
 
+function resetFiguras(){
+  for (var i = 0; i < dificultad; i++) {
+    figuras[i].posInicial();
+  }
 
+}
 canvas.onmousedown=function(event){
   for (var i = 0; i < dificultad; i++){
     if(figuras[i].seleccionar(event.clientX-canvas.offsetLeft,event.clientY-canvas.offsetTop)){

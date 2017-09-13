@@ -8,6 +8,13 @@ class triangulo {
   }
 }
 
+  triangulo.prototype.posInicial = function () {
+    this.posX=100;
+    this.posY=50;
+    this.radio=50;
+    this.color='#877645';
+  };
+
   triangulo.prototype.dibujar=function(){
 
     // triangle 4, at right, top

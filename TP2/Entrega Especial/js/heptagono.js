@@ -7,6 +7,14 @@ class heptagono {
     this.id=5;
   }
 }
+
+heptagono.prototype.posInicial = function () {
+  this.posX=250;
+  this.posY=250;
+  this.radio=50;
+  this.color='violet';
+};
+
 heptagono.prototype.dibujar = function () {
   ctx.fillStyle = this.color;
   ctx.strokeStyle="black";

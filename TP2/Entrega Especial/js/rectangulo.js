@@ -10,6 +10,14 @@ class rectangulo {
 
 
 }
+
+rectangulo.prototype.posInicial = function () {
+  this.posX=350;
+  this.posY=215;
+  this.w=110;
+  this.h=70;
+  this.color='green';
+};
 rectangulo.prototype.dibujar=function(){
   var c=document.getElementById("canvas");
   var ctx=c.getContext("2d");

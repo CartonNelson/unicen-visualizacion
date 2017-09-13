@@ -18,7 +18,9 @@ img.resize {
 }
 .reloj{
 	float: left;
-	font-size: 25px;
+	font-size: 27px;
 	font-family: Courier,sans-serif;
-	color: #363431;
+	color: #1D660A;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
 }

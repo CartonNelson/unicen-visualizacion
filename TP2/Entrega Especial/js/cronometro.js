@@ -7,6 +7,7 @@ var centesimas = 0;
 var segundos = 0;
 var minutos = 0;
 var horas = 0;
+var control;
 cronometro.prototype.inicio = function () {
   control = setInterval(this.cronometrar,10);
   //document.getElementById("inicio").disabled = true;
@@ -19,6 +20,22 @@ cronometro.prototype.parar = function () {
   clearInterval(control);
 	//document.getElementById("parar").disabled = true;
 	//document.getElementById("continuar").disabled = false;
+};
+cronometro.prototype.reinicio = function () {
+
+
+	clearInterval(control);
+	centesimas = 0;
+	segundos = 0;
+	minutos = 0;
+	horas = 0;
+	Segundos.innerHTML = ":00";
+	Minutos.innerHTML = ":00";
+	Horas.innerHTML = "00";
+	//document.getElementById("inicio").disabled = false;
+	//document.getElementById("parar").disabled = true;
+	//document.getElementById("continuar").disabled = true;
+	//document.getElementById("reinicio").disabled = true;
 };
 
 cronometro.prototype.cronometrar = function () {
