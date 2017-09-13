@@ -5,6 +5,7 @@ class circulo {
     this.posY=y;
     this.radio=radio;
     this.color=color;
+    this.id=2;
   }
 
 
@@ -12,10 +13,12 @@ class circulo {
 
 circulo.prototype.dibujar = function () {
   ctx.fillStyle = this.color;
+  ctx.strokeStyle="black";
   ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
   ctx.fill();
+  ctx.stroke();
   ctx.closePath();
 }
 

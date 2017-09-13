@@ -1,10 +1,10 @@
 class triangulo {
-  constructor(x,y,radio,color) {
+  constructor(x,y,radio,color,id) {
     this.posX=x;
     this.posY=y;
     this.color=color;
     this.radio=radio;
-
+    this.id=1;
   }
 }
 

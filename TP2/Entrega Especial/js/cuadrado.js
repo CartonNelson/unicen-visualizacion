@@ -6,6 +6,7 @@
     this.posY=posY;
     this.lado=lado;
     this.color=color;
+    this.id=3;
 
   }
 

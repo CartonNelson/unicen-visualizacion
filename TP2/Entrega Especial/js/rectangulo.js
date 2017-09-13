@@ -5,6 +5,7 @@ class rectangulo {
     this.w=w;
     this.h=h;
     this.color=color;
+    this.id=8;
   }
 
 

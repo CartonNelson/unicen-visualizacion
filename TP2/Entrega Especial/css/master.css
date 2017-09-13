@@ -4,6 +4,7 @@ background-repeat: no-repeat;
 }
 
 body{
+  background-image:url("../images/body.png");
 }
 img.resize {
     width:100%; /* you can use % */

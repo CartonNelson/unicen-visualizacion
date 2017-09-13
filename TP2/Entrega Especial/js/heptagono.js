@@ -4,6 +4,7 @@ class heptagono {
     this.posY=y;
     this.radio=radio;
     this.color=color;
+    this.id=5;
   }
 }
 heptagono.prototype.dibujar = function () {
@@ -32,7 +33,7 @@ heptagono.prototype.dibujar = function () {
 
   heptagono.prototype.seleccionar = function (clix,cliy) {
     var x =   Math.pow((clix-this.posX),2);
-    var y =   Math.pow((cliy-this.posY),2);
+    var y =   Math.pow((cliy-this.posY+20),2);
     var d1 = Math.sqrt(x+y);
 
       return (d1<this.radio);
