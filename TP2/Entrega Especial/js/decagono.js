@@ -39,3 +39,14 @@ decagono.prototype.dibujar = function () {
 
       return (d1<this.radio);
   };
+
+  decagono.prototype.comparaFigura = function (d) {
+
+    return(d==this.id);
+
+  }
+  decagono.prototype.colocar = function (posX,posY) {
+    this.posX=posX;
+    this.posY=posY;
+    this.dibujar();
+  };

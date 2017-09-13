@@ -38,3 +38,14 @@ heptagono.prototype.dibujar = function () {
 
       return (d1<this.radio);
   };
+
+  heptagono.prototype.comparaFigura = function (h) {
+
+    return(h==this.id);
+
+  }
+  heptagono.prototype.colocar = function (posX,posY) {
+    this.posX=posX;
+    this.posY=posY;
+    this.dibujar();
+  };

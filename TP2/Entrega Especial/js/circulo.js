@@ -31,3 +31,14 @@ circulo.prototype.seleccionar=function(clix,cliy){
       return(d1<this.radio);
 
 }
+circulo.prototype.comparaFigura = function (c) {
+
+  return(c==this.id);
+
+}
+
+circulo.prototype.colocar = function (posX,posY) {
+  this.posX=posX;
+  this.posY=posY;
+  this.dibujar();
+};

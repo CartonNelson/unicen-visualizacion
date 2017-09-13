@@ -1,5 +1,5 @@
 class triangulo {
-  constructor(x,y,radio,color,id) {
+  constructor(x,y,radio,color) {
     this.posX=x;
     this.posY=y;
     this.color=color;
@@ -52,4 +52,14 @@ var v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
 return ((u >= 0) && (v >= 0) && (u + v < 1));
 
+};
+triangulo.prototype.comparaFigura = function (t) {
+  return(t==this.id);
+
+}
+
+triangulo.prototype.colocar = function (posX,posY) {
+  this.posX=posX;
+  this.posY=posY;
+  this.dibujar();
 };

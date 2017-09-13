@@ -39,3 +39,15 @@ hexagono.prototype.dibujar = function () {
 
       return (d1<this.radio);
   };
+
+  hexagono.prototype.comparaFigura = function (h) {
+
+    return(h==this.id);
+
+  }
+
+  hexagono.prototype.colocar = function (posX,posY) {
+    this.posX=posX;
+    this.posY=posY;
+    this.dibujar();
+  };

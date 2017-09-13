@@ -38,3 +38,16 @@ rombo.prototype.seleccionar=function(clix,cliy){
       return(d1<this.radio);
 
 }
+
+
+rombo.prototype.comparaFigura = function (r) {
+
+  return(r==this.id);
+
+}
+
+rombo.prototype.colocar = function (posX,posY) {
+  this.posX=posX;
+  this.posY=posY;
+  this.dibujar();
+};

@@ -29,3 +29,14 @@ rectangulo.prototype.seleccionar = function (clix,cliy) {
   (this.posY-canvas.offsetTop < (cliy- fig.top)) && (this.h + this.posY-canvas.offsetTop > (cliy- fig.top));
   //(clix>=this.posX && clix<=this.posX+this.w && cliy>=this.posY && cliy<=this.posY+this.h);
 }
+rectangulo.prototype.comparaFigura = function (r) {
+
+  return(r==this.id);
+
+}
+
+rectangulo.prototype.colocar = function (posX,posY) {
+  this.posX=posX;
+  this.posY=posY;
+  this.dibujar();
+};

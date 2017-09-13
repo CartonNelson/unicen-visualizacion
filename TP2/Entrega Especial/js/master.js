@@ -5,13 +5,8 @@ var seleccion=[];
 var figuras =[];
 var figurasFijas=[];
 var dificultad;
-$("#dificultad").val($("#dificultad option:first").val());
-$('#dificultad').change(function() {
-  ctx.clearRect(0,0,canvas.width, canvas.height);
- dificultad=($('#dificultad').val());
- console.log(dificultad);
-  iniciar(dificultad);
-});
+var aciertos=0;
+
 //figuras encastrables
 var tri = new triangulo(100,50,50,'#877645');
 var circ = new circulo(100,250,50,'brown');
@@ -38,17 +33,25 @@ var penFijo= new pentagono(930,400,50,'white');
 
 //-----------------------------------
 //cargo arreglos de figuras movibles y fijas
-figuras.push(tri,circ,cuad,dec,hep,hex,pen,rec,rom);
+
 //figurasFijas.push(recFijo,hepFijo,romFijo,cuadFijo,triFijo,decFijo,hexFijo,circFijo,penFijo);
 
 figurasFijas.push(triFijo,circFijo,cuadFijo,decFijo,hepFijo,hexFijo,penFijo,recFijo,romFijo);
+figuras.push(tri,circ,cuad,dec,hep,hex,pen,rec,rom);
+$('#dificultad').change(function() {
 
+ dificultad=($('#dificultad').val());
+
+  iniciar(dificultad);
+});
 //inicia tablero con dificultad seleccionada
 function iniciar(dificultad){
-
+  ctx.clearRect(0,0,canvas.width, canvas.height);
   for (var i = 0; i < dificultad; i++) {
-    figuras[i].dibujar();
 
+
+
+      figuras[i].dibujar();
       figurasFijas[i].dibujar();
       seleccion[i]=false;
     }
@@ -62,6 +65,7 @@ canvas.onmousedown=function(event){
   for (var i = 0; i < dificultad; i++){
     if(figuras[i].seleccionar(event.clientX-canvas.offsetLeft,event.clientY-canvas.offsetTop)){
       seleccion[i] = true;
+      var figura=figuras[i];
       figuras[i].posX = event.clientX-canvas.offsetLeft;
       figuras[i].posY = event.clientY-canvas.offsetTop;
       break;
@@ -79,20 +83,43 @@ canvas.onmousedown=function(event){
           ctx.clearRect(0,0,canvas.width, canvas.height);
 
           for (var i = 0; i < dificultad; i++) {
-            figuras[i].dibujar();
             figurasFijas[i].dibujar();
+            figuras[i].dibujar();
+
 
           }
 
         }
       }
+      canvas.onmouseup = function(event) {
+
+        canvas.onmousemove = null;
+
+        for (var i = 0; i < dificultad; i++) {
+          if (figurasFijas[i].seleccionar(event.clientX-canvas.offsetLeft,event.clientY-canvas.offsetTop)&&figurasFijas[i].comparaFigura(figura.id)) {
+            console.log("if");
+            console.log(figura.id);
+            console.log(figurasFijas[i].id);
+            aciertos+=1;
+            figura.colocar(figurasFijas[i].posX,figurasFijas[i].posY);
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+
+
+          }
+
+          seleccion[i] = false;
+        }
+          for (var i = 0; i < dificultad; i++) {
+            figurasFijas[i].dibujar();
+            figuras[i].dibujar();
+          }
+
+          if (aciertos==dificultad) {
+            alert("win");
+        }
+
+        }
+
+
     }
-}
-canvas.onmouseup = function(event) {
-
-  canvas.onmousemove = null;
-
-  for (var i = 0; i < dificultad; i++) {
-    seleccion[i] = false;
-  }
 }

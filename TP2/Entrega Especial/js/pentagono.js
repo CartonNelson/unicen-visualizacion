@@ -37,3 +37,15 @@ pentagono.prototype.seleccionar=function(clix,cliy){
       return(d1<this.radio);
 
 }
+
+pentagono.prototype.comparaFigura = function (p) {
+
+  return(p==this.id);
+
+}
+
+pentagono.prototype.colocar = function (posX,posY) {
+  this.posX=posX;
+  this.posY=posY;
+  this.dibujar();
+};

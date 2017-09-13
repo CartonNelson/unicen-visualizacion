@@ -32,3 +32,14 @@ cuadrado.prototype.seleccionar = function (clix,cliy) {
   (this.posY-canvas.offsetTop < (cliy- fig.top)) && (this.lado + this.posY-canvas.offsetTop > (cliy- fig.top));
 
 }
+cuadrado.prototype.comparaFigura = function (c) {
+
+  return(c==this.id);
+
+}
+
+cuadrado.prototype.colocar = function (posX,posY) {
+  this.posX=posX;
+  this.posY=posY;
+  this.dibujar();
+};
