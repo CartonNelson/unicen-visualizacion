@@ -1,11 +1,14 @@
 
 class circulo {
-  constructor(x,y,radio,color) {
+  constructor(x,y,radio,color,block) {
     this.posX=x;
     this.posY=y;
     this.radio=radio;
     this.color=color;
     this.id=2;
+    this.block=block;
+    this.imagen=new Image();
+    this.imagen.src= "images/circulo.png";
   }
 
 
@@ -25,7 +28,13 @@ circulo.prototype.dibujar = function () {
   ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
   ctx.fill();
   ctx.stroke();
+
   ctx.closePath();
+  if (this.block==false) {
+    ctx.drawImage(this.imagen,this.posX - this.radio, this.posY - this.radio,this.radio * 2 , this.radio * 2);
+  }
+
+
 }
 
 

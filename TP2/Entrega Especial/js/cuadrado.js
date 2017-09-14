@@ -1,12 +1,15 @@
  class cuadrado {
 
 
-   constructor(posX,posY,lado,color) {
+   constructor(posX,posY,lado,color,block) {
     this.posX=posX;
     this.posY=posY;
     this.lado=lado;
     this.color=color;
     this.id=3;
+    this.block=block;
+    this.imagen=new Image();
+    this.imagen.src= "images/cuadrado.png";
 
   }
 
@@ -29,6 +32,10 @@ cuadrado.prototype.dibujar=function(){
   ctx.fill();
   ctx.stroke();
   ctx.closePath();
+  if (this.block==false) {
+  ctx.drawImage(this.imagen,this.posX,this.posY,this.lado,this.lado);  
+  }
+
 }
 
 cuadrado.prototype.seleccionar = function (clix,cliy) {

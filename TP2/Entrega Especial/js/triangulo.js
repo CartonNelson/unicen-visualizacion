@@ -1,10 +1,14 @@
 class triangulo {
-  constructor(x,y,radio,color) {
+  constructor(x,y,radio,color,block) {
     this.posX=x;
     this.posY=y;
     this.color=color;
     this.radio=radio;
     this.id=1;
+    this.block=block;
+    this.imagen=new Image();
+    this.imagen.src= "images/triangulo.png";
+
   }
 }
 
@@ -30,6 +34,9 @@ class triangulo {
      ctx.closePath(); // connect end to start
      ctx.fill();
      ctx.stroke(); // outline the shape that's been described
+     if (this.block==false) {
+       ctx.drawImage(this.imagen,this.posX -this.radio, this.posY ,this.radio * 2 , this.radio * 2);
+     }
 
 }
 

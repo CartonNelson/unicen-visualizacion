@@ -9,15 +9,16 @@ var aciertos=0;
 var cronom= new cronometro();
 
 
+
   //figuras encastrables
-  var tri = new triangulo(100,50,50,'#877645');
-  var circ = new circulo(100,250,50,'brown');
-  var cuad = new cuadrado(50,350,90,'grey');
-  var dec =new decagono(250,100,50,"red");
+  var tri = new triangulo(100,50,50,'#877645',false);
+  var circ = new circulo(100,250,50,'brown',false);
+  var cuad = new cuadrado(50,350,90,'grey',false);
+  var dec =new decagono(250,100,50,"red",false);
   var hep = new heptagono(250,250,50,"violet")
   var hex= new hexagono(250,400,50,"orange");
   var pen= new pentagono(400,100,50,'yellow');
-  var rec = new rectangulo(350,215,110,70,'green');
+  var rec = new rectangulo(350,215,110,70,'green',false);
   var rom= new rombo(400,400,50,'#563456');
 
   //figuras fijas
@@ -45,6 +46,7 @@ $(document).ready(function(){
 });
 
 $('#comenzar').click(function() {
+
   resetFiguras();
   cronom.reinicio();
     $("#cartel").fadeOut()

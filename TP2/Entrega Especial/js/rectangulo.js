@@ -1,11 +1,14 @@
 class rectangulo {
-  constructor(posX,posY,w,h,color) {
+  constructor(posX,posY,w,h,color,block) {
     this.posX=posX;
     this.posY=posY;
     this.w=w;
     this.h=h;
     this.color=color;
     this.id=8;
+    this.block=block;
+    this.imagen=new Image();
+    this.imagen.src= "images/rec.png";
   }
 
 
@@ -28,6 +31,9 @@ rectangulo.prototype.dibujar=function(){
   ctx.fill();
   ctx.stroke();
   ctx.closePath();
+  if (this.block==false) {
+  ctx.drawImage(this.imagen,this.posX,this.posY,this.w,this.h);
+  }
 }
 
 rectangulo.prototype.seleccionar = function (clix,cliy) {
