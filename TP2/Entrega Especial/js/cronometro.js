@@ -1,6 +1,9 @@
 class cronometro {
   constructor() {
-
+    this.centesimas = 0;
+    this.segundos = 0;
+    this.minutos = 0;
+    this.horas = 0;
   }
 };
 var centesimas = 0;
@@ -10,16 +13,13 @@ var horas = 0;
 var control;
 cronometro.prototype.inicio = function () {
   control = setInterval(this.cronometrar,10);
-  //document.getElementById("inicio").disabled = true;
-  //document.getElementById("parar").disabled = false;
-  //document.getElementById("continuar").disabled = true;
-  //document.getElementById("reinicio").disabled = false;
 };
 
 cronometro.prototype.parar = function () {
+  this.segundos=segundos;
+  this.minutos=minutos;
+  this.horas=horas;
   clearInterval(control);
-	//document.getElementById("parar").disabled = true;
-	//document.getElementById("continuar").disabled = false;
 };
 cronometro.prototype.reinicio = function () {
 
@@ -32,10 +32,6 @@ cronometro.prototype.reinicio = function () {
 	Segundos.innerHTML = ":00";
 	Minutos.innerHTML = ":00";
 	Horas.innerHTML = "00";
-	//document.getElementById("inicio").disabled = false;
-	//document.getElementById("parar").disabled = true;
-	//document.getElementById("continuar").disabled = true;
-	//document.getElementById("reinicio").disabled = true;
 };
 
 cronometro.prototype.cronometrar = function () {

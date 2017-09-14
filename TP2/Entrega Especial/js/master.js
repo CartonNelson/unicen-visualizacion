@@ -37,17 +37,21 @@ var cronom= new cronometro();
   figuras.push(tri,circ,cuad,dec,hep,hex,pen,rec,rom);
 
 //-----------------------------------
+$(document).ready(function(){
+
+        $("#cartel").fadeOut()
+
+
+});
 
 $('#comenzar').click(function() {
   resetFiguras();
   cronom.reinicio();
+    $("#cartel").fadeOut()
   aciertos=0;
   dificultad=($('#dificultad').val());
   iniciar(dificultad);
   cronom.inicio();
-    //$("#cartel").append('<div class="alert alert-danger">');
-    //$("#cartel").append('<strong>'+Danger!+'</strong>');
-    //$("#cartel").append('</div>');
 
 });
 //inicia tablero con dificultad seleccionada
@@ -114,7 +118,7 @@ canvas.onmousedown=function(event){
             //console.log(figura.id);
             //console.log(figurasFijas[i].id);
             aciertos+=1;
-            alert(aciertos);
+
             figura.colocar(figurasFijas[i].posX,figurasFijas[i].posY);
             ctx.clearRect(0,0,canvas.width, canvas.height);
 
@@ -133,7 +137,8 @@ canvas.onmousedown=function(event){
 
           if (aciertos==dificultad) {
             cronom.parar();
-
+              $("#cartel").fadeIn();
+              ganador.innerHTML="Ganaste!! Tiempo"+' '+cronom.horas+':'+cronom.minutos+':'+cronom.segundos;
 
         }
 
