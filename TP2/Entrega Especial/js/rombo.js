@@ -1,10 +1,14 @@
 class rombo {
-  constructor(x,y,radio,color) {
+  constructor(x,y,radio,color,block) {
     this.posX=x;
     this.posY=y;
     this.radio=radio;
     this.color=color;
     this.id=9;
+    this.block=block;
+    this.imagen=new Image();
+    this.imagen.src= "images/rombo.png";
+
   }
 }
 
@@ -37,6 +41,9 @@ rombo.prototype.dibujar=function(){
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
+      if (this.block==false) {
+        ctx.drawImage(this.imagen,this.posX - this.radio, this.posY - this.radio,this.radio * 2 , this.radio * 2);
+      }
 }
 rombo.prototype.seleccionar=function(clix,cliy){
   var x =   Math.pow((clix-this.posX),2);

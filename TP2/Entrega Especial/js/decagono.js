@@ -1,10 +1,13 @@
 class decagono {
-  constructor(x,y,radio,color) {
+  constructor(x,y,radio,color,block) {
     this.posX=x;
     this.posY=y;
     this.radio=radio;
     this.color=color;
     this.id=4;
+    this.block=block;
+    this.imagen=new Image();
+    this.imagen.src= "images/dec.png";
   }
 }
 decagono.prototype.posInicial = function () {
@@ -31,6 +34,9 @@ decagono.prototype.dibujar = function () {
   ctx.closePath();
   ctx.fill();
   ctx.stroke();
+  if (this.block==false) {
+    ctx.drawImage(this.imagen,this.posX - this.radio, this.posY - this.radio,this.radio * 2 , this.radio * 2);
+  }
 };
 
 

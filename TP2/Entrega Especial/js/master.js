@@ -16,10 +16,10 @@ var cronom= new cronometro();
   var cuad = new cuadrado(50,350,90,'grey',false);
   var dec =new decagono(250,100,50,"red",false);
   var hep = new heptagono(250,250,50,"violet")
-  var hex= new hexagono(250,400,50,"orange");
+  var hex= new hexagono(250,400,50,"orange",false);
   var pen= new pentagono(400,100,50,'yellow');
   var rec = new rectangulo(350,215,110,70,'green',false);
-  var rom= new rombo(400,400,50,'#563456');
+  var rom= new rombo(400,400,50,'#563456',false);
 
   //figuras fijas
   var triFijo = new triangulo(800,200,50,'white');

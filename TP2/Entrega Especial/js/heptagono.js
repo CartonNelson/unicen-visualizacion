@@ -5,6 +5,7 @@ class heptagono {
     this.radio=radio;
     this.color=color;
     this.id=5;
+
   }
 }
 
