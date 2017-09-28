@@ -27,7 +27,6 @@ var cronom= new cronometro();
   var hepFijo = new heptagono(650,250,50,"white")
   var romFijo= new rombo(650,400,50,'white');
   var cuadFijo = new cuadrado(750,50,90,'white');
-
   var decFijo =new decagono(800,400,50,"white");
   var hexFijo= new hexagono(930,100,50,"white");
   var circFijo = new circulo(930,250,50,'white');
