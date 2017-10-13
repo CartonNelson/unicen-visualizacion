@@ -1,0 +1,12 @@
+.bugs{
+  width: 45px;
+  height: 70px;
+  margin: 2% auto;
+  background: url('../images/tinyBugs.png') left center;
+  animation: play .8s  steps(6) infinite;
+}
+
+@keyframes play {
+  0%{background-position-x:-25px; background-position-y:-130px; }
+	100% { background-position-x:-345px; background-position-y:-125px; }
+}

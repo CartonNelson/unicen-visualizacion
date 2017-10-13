@@ -1,0 +1,23 @@
+div{
+  width: 400px;
+  height: 400px;
+  border-style: double;
+}
+@keyframes rotacionHora{
+  from {transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+img{
+  position: fixed;
+  height: 400px;
+  width: 400px;
+}
+#segundero{
+  animation: rotacionHora 60s linear infinite;
+}
+#minutero{
+  animation: rotacionHora 3600s linear infinite;
+}
+#hora{
+  animation: rotacionHora 21600s linear infinite;
+}

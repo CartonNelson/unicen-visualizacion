@@ -1,0 +1,22 @@
+.title{
+  font-family: fantasy;
+  margin-top: 4%;
+  margin-left: 45%;
+  margin-right: 40%;
+}
+a:link{
+  text-decoration: none;
+}
+.top-navbar{
+
+  background-color: red;
+
+}
+.top-navbar li,.main-navbar li{
+  display: inline ;
+
+}
+
+li{
+  margin-right: 3%;
+}
