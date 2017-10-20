@@ -1,12 +1,66 @@
 .bugs{
+  margin-top: 210px;
+  margin-left: 25%;
   width: 45px;
-  height: 70px;
-  margin: 2% auto;
+  height: 60px;
+  position: fixed;
   background: url('../images/tinyBugs.png') left center;
-  animation: play .8s  steps(6) infinite;
+  animation: jump .8s  steps(7) infinite;
+
 }
 
-@keyframes play {
+@keyframes run {
   0%{background-position-x:-25px; background-position-y:-130px; }
-	100% { background-position-x:-345px; background-position-y:-125px; }
+	100% { background-position-x:-345px; background-position-y:-130px; }
+}
+@keyframes backMove {
+  0%{background-position-x:0px; background-position-y:0px; }
+	100% { background-position-x:-256px; background-position-y:0px; }
+}
+
+@keyframes quiet {
+  0%{background-position-x:-25px; background-position-y:-525px; }
+	100% { background-position-x:-325px; background-position-y:-525px; }
+}
+
+@keyframes jump {
+  0%{background-position-x:-25px; background-position-y:-330px;
+      transform:scale(-1,1);
+    }
+  50%{
+      /*transform:scale(-1,1);*/
+      transform:translate(0px,-100px);
+      /*transform:scale(-1,1);*/
+      }
+	100% { background-position-x:-480px; background-position-y:-330px;
+        /*transform:scale(-1,1);*/
+      }
+}
+.contenedor{
+  margin-top: 10%;
+  width:auto;
+  height: 260px;
+  background-color: green;
+  background-repeat: no-repeat;
+}
+img{
+  position: fixed;
+
+}
+.fondoDelante{
+
+  background: url('../images/fondoDelante-.png');
+  width: auto;
+  height:100%;
+  background-repeat: repeat-x;
+  animation: backMove 1.0s linear infinite;
+
+}
+
+.fondoLejano{
+  background: url('../images/fondoLejano.png');
+  width: auto;
+  height:100%;
+  background-repeat: repeat-x;
+  animation: backMove 2.1s linear infinite;
 }
