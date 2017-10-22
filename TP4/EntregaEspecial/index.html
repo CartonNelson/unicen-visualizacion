@@ -8,26 +8,33 @@
   <body>
 
 
-      <div class="contenedor">
+      <div class="contenedor" onclick="cambio();">
 
-        <div class="fondoLejano">
-          <div class="bugs" id="bugs" onclick="cambio();">
+        <div class="fondoLejano" id="fondoLejano">
+          <div class="bugs" id="bugs" >
           </div>
         </div>
 
-          <div class="fondoDelante">
+          <div class="fondoDelante" id="fondoDelante">
 
           </div>
 
 
 
       </div>
+      <button type="button" onclick="setBackMove();" name="button">setBackMove</button>
 
-
-
+      <button type="button" onclick="correr();" name="button">correr</button>
+      <button type="button" onclick="saltar();" name="button">saltar</button>
+      <button type="button" onclick="quieto();" name="button">quieto</button>
 
   </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
   <script type="text/javascript" src="js/master.js">
+
 
   </script>
 </html>

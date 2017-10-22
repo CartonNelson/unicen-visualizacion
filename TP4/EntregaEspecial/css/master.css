@@ -3,10 +3,18 @@
   margin-left: 25%;
   width: 45px;
   height: 60px;
-  position: fixed;
+  position:absolute;
   background: url('../images/tinyBugs.png') left center;
-  animation: jump .8s  steps(7) infinite;
+  animation-name: quiet;
+  animation-duration: .8s;
+  animation-timing-function: steps(5);
+  animation-iteration-count: infinite;
 
+}
+@keyframes jump {
+  0%{background-position-x:0px; background-position-y:0px;}
+  50%{transform:translate(0px,-100px);}
+	100% { background-position-x:-445px; background-position-y:0px;}
 }
 
 @keyframes run {
@@ -23,19 +31,23 @@
 	100% { background-position-x:-325px; background-position-y:-525px; }
 }
 
-@keyframes jump {
+/*@keyframes jump {
+
   0%{background-position-x:-25px; background-position-y:-330px;
-      transform:scale(-1,1);
+
     }
   50%{
-      /*transform:scale(-1,1);*/
+
       transform:translate(0px,-100px);
-      /*transform:scale(-1,1);*/
+
       }
 	100% { background-position-x:-480px; background-position-y:-330px;
-        /*transform:scale(-1,1);*/
+
       }
-}
+}*/
+
+
+
 .contenedor{
   margin-top: 10%;
   width:auto;
@@ -43,24 +55,30 @@
   background-color: green;
   background-repeat: no-repeat;
 }
-img{
+/*img{
   position: fixed;
 
+}*/
+.fondoLejano{
+  background: url('../images/fondoLejano.png');
+    animation-name: none;
+  animation-duration: 2.1s;
 }
 .fondoDelante{
 
   background: url('../images/fondoDelante-.png');
-  width: auto;
-  height:100%;
-  background-repeat: repeat-x;
-  animation: backMove 1.0s linear infinite;
+  animation-name: none;
+  animation-duration: 1.0s;
 
 }
 
-.fondoLejano{
-  background: url('../images/fondoLejano.png');
-  width: auto;
-  height:100%;
-  background-repeat: repeat-x;
-  animation: backMove 2.1s linear infinite;
+
+
+.fondoLejano, .fondoDelante{
+
+    width: auto;
+    height:100%;
+    background-repeat: repeat-x;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
