@@ -11,10 +11,30 @@
   animation-iteration-count: infinite;
 
 }
+
+.taz{
+  margin-top: 210px;
+  margin-left: 45%;
+  width: 60px;
+  height: 60px;
+  position:absolute;
+  background: url('../images/taz.png') left center;
+  animation-name: tazMove;
+  animation-duration: .8s;
+  animation-timing-function: steps(9);
+  animation-iteration-count: infinite;
+
+
+}
 @keyframes jump {
   0%{background-position-x:0px; background-position-y:0px;}
   50%{transform:translate(0px,-100px);}
 	100% { background-position-x:-445px; background-position-y:0px;}
+}
+
+@keyframes tazMove {
+  0%{background-position-x:0px; background-position-y:0px;}
+	100% { background-position-x:-559px; background-position-y:0px;}
 }
 
 @keyframes run {
@@ -31,22 +51,6 @@
 	100% { background-position-x:-325px; background-position-y:-525px; }
 }
 
-/*@keyframes jump {
-
-  0%{background-position-x:-25px; background-position-y:-330px;
-
-    }
-  50%{
-
-      transform:translate(0px,-100px);
-
-      }
-	100% { background-position-x:-480px; background-position-y:-330px;
-
-      }
-}*/
-
-
 
 .contenedor{
   margin-top: 10%;
@@ -55,19 +59,16 @@
   background-color: green;
   background-repeat: no-repeat;
 }
-/*img{
-  position: fixed;
 
-}*/
 .fondoLejano{
   background: url('../images/fondoLejano.png');
-    animation-name: none;
+
   animation-duration: 2.1s;
 }
 .fondoDelante{
 
   background: url('../images/fondoDelante-.png');
-  animation-name: none;
+
   animation-duration: 1.0s;
 
 }
@@ -75,7 +76,7 @@
 
 
 .fondoLejano, .fondoDelante{
-
+    animation-name: none;
     width: auto;
     height:100%;
     background-repeat: repeat-x;
