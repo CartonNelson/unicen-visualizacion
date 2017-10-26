@@ -23,7 +23,7 @@ this.vel+=this.acel;
 this.y+=this.vel;
 this.bottom = this.y + this.div.offsetHeight;
 this.acel=0;
-if (this.y>=340) {
+if (this.y>=470) {
   this.ground=true;
 }
 
@@ -42,9 +42,9 @@ bugs.prototype.draw=function(){
 
 
 bugs.prototype.piso=function(){
-if (this.y>=340) {
+if (this.y>=470) {
   this.vel*=0;
-  this.y=340;
+  this.y=470;
 }
 }
 

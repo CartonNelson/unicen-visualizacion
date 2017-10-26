@@ -23,7 +23,7 @@ taz.prototype.draw=function(){
    this.top = this.y;
    this.down = this.y + this.div.offsetHeight;
    if(this.x < -60){
-    this.x = Math.floor(Math.random() * (1600 - 1400 + 1)) + 800;
+    this.x = Math.floor(Math.random() * (1350 - 1300 + 1)) + 1300;
 
    }
  }

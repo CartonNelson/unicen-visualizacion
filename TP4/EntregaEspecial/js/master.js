@@ -1,8 +1,8 @@
 
 
-var player=new bugs(500,340);
+var player=new bugs(500,470);
 var escen=new escenario();
-var tazz = new taz(1200,340);
+var tazz = new taz(1200,470);
 
 var gravedad=0.25;
 
@@ -40,8 +40,8 @@ function mainLoop() {
 
   $(document).keydown(function(e){
       switch (e.which){
-      case 37:    //Flecha izquierda
-
+      case 13:    //Flecha izquierda
+        requestAnimationFrame(mainLoop);
           break;
 
       case 38:
@@ -55,7 +55,7 @@ function mainLoop() {
           break;
 
       case 39:    //Flecha derecha
-      requestAnimationFrame(mainLoop);
+
       player.setMove("url(images/tinyBugs.png)","run","steps(6)","infinite");
       escen.setBackMove("backMove");
           break;
@@ -70,6 +70,12 @@ function mainLoop() {
       player.setMove("url(images/tinyBugs.png)","run","steps(6)","infinite");
 
           break;
+
+          case 39:    //Flecha derecha
+
+          player.setMove("url(images/tinyBugs.png)","quiet","steps(5)","infinite");
+          escen.setBackMove("none");
+              break;
 
   }
   });
