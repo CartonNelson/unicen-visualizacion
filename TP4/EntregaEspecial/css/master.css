@@ -1,45 +1,53 @@
+body{
+  background: url("../images/fondo.jpg") center center;
+  background-repeat: no-repeat;
+}
+
 .bugs{
-  margin-top: 210px;
-  margin-left: 25%;
+  left: 500px;
   width: 45px;
-  height: 60px;
-  position:absolute;
   background: url('../images/tinyBugs.png') left center;
   animation-name: quiet;
-  animation-duration: .8s;
   animation-timing-function: steps(5);
-  animation-iteration-count: infinite;
+  border:1px black solid;
+
 
 }
 
-.taz{
-  margin-top: 210px;
-  margin-left: 45%;
+#taz{
+  left:1200px;
   width: 60px;
-  height: 60px;
-  position:absolute;
   background: url('../images/taz.png') left center;
   animation-name: tazMove;
-  animation-duration: .8s;
   animation-timing-function: steps(9);
-  animation-iteration-count: infinite;
 
+}
 
+#taz,.bugs{
+    top: 340px;
+  height: 60px;
+    position:absolute;
+    animation-duration: .8s;
+    animation-iteration-count: infinite;
 }
 @keyframes jump {
   0%{background-position-x:0px; background-position-y:0px;}
-  50%{transform:translate(0px,-100px);}
+  /*60%{transform: translate();}*/
 	100% { background-position-x:-445px; background-position-y:0px;}
 }
 
 @keyframes tazMove {
   0%{background-position-x:0px; background-position-y:0px;}
-	100% { background-position-x:-559px; background-position-y:0px;}
+	100% { background-position-x:-550px; background-position-y:0px;}
 }
 
 @keyframes run {
   0%{background-position-x:-25px; background-position-y:-130px; }
 	100% { background-position-x:-345px; background-position-y:-130px; }
+}
+@keyframes die{
+  0%{background-position-x:-45px; background-position-y:-802px; }
+	100% { background-position-x:-260px; background-position-y:-802px; }
 }
 @keyframes backMove {
   0%{background-position-x:0px; background-position-y:0px; }
@@ -52,17 +60,19 @@
 }
 
 
+
+
 .contenedor{
   margin-top: 10%;
-  width:auto;
+  width:auto ;
   height: 260px;
   background-color: green;
   background-repeat: no-repeat;
-}
 
+
+}
 .fondoLejano{
   background: url('../images/fondoLejano.png');
-
   animation-duration: 2.1s;
 }
 .fondoDelante{
@@ -82,4 +92,12 @@
     background-repeat: repeat-x;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+}
+#cartel{
+  display:none;     
+  width: auto;
+  height:70px;
+text-align: center;
+vertical-align: middle;
+line-height: 20px;
 }
