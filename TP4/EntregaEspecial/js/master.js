@@ -14,6 +14,7 @@ function update() {
 
 
   if (player.loose(tazz)) {
+    player.dead=true;
     $("#cartel").css("display","block");
     $("#cartel").fadeIn();
     ganador.innerHTML="Has perdido!!";
@@ -45,7 +46,7 @@ function mainLoop() {
           break;
 
       case 38:
-      if(player.ground){
+      if((player.ground)&&(!player.dead)){
         player.ground=false;
         player.addAcel(-7);
           player.setMove("url(images/jump.png)","jump","steps(7)","0.9");
@@ -55,9 +56,11 @@ function mainLoop() {
           break;
 
       case 39:    //Flecha derecha
+      if(!player.dead){
+        player.setMove("url(images/tinyBugs.png)","run","steps(6)","infinite");
+        escen.setBackMove("backMove");
+      }
 
-      player.setMove("url(images/tinyBugs.png)","run","steps(6)","infinite");
-      escen.setBackMove("backMove");
           break;
 
 
@@ -67,13 +70,15 @@ function mainLoop() {
   $(document).keyup(function(e){
       switch (e.which){
       case 38:
+        if(!player.dead){
       player.setMove("url(images/tinyBugs.png)","run","steps(6)","infinite");
-
+      }
           break;
 
           case 39:    //Flecha derecha
-
+        if(!player.dead){
           player.setMove("url(images/tinyBugs.png)","quiet","steps(5)","infinite");
+        }
           escen.setBackMove("none");
               break;
 

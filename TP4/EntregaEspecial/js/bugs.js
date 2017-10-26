@@ -11,6 +11,7 @@ class bugs {
     this.acel=0;
     this.vel=0;
     this.ground=true;
+    this.dead=false;
 
   }
 
@@ -69,5 +70,6 @@ bugs.prototype.setMove=function(url,animationName,steps,duracion){
 
 
 bugs.prototype.loose=function(taz){
+
 return(!(this.x>taz.right||this.right<taz.left||this.y>taz.down||this.bottom<taz.top));
 }
